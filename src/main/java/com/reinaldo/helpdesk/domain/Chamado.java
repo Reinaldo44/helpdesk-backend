@@ -2,11 +2,20 @@ package com.reinaldo.helpdesk.domain;
 
 import com.reinaldo.helpdesk.domain.enums.Prioridade;
 import com.reinaldo.helpdesk.domain.enums.Status;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Chamado {
+@Entity
+public class Chamado implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private LocalDate dataAbertura = LocalDate.now();
     private LocalDate dataFechamento;
     private Prioridade prioridade;
@@ -14,8 +23,11 @@ public class Chamado {
     private String titulo;
     private String observacoes;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-
+    @ManyToOne
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
 
     public Chamado() {
