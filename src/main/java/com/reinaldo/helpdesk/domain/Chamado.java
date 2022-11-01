@@ -33,12 +33,14 @@ public class Chamado implements Serializable {
     public Chamado() {
     }
 
-    public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes) {
+    public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico, Cliente cliente) {
         this.id = id;
         this.prioridade = prioridade;
         this.status = status;
         this.titulo = titulo;
         this.observacoes = observacoes;
+        this.tecnico = tecnico;
+        this.cliente = cliente;
     }
 
     public Integer getId() {
