@@ -3,7 +3,6 @@ package com.reinaldo.helpdesk.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;

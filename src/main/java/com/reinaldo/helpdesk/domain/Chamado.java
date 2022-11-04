@@ -26,6 +26,8 @@ public class Chamado implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+
     @ManyToOne
     @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
