@@ -1,6 +1,5 @@
 package com.reinaldo.helpdesk.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
 
