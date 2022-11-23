@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
-
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
@@ -27,12 +26,13 @@ public class TecnicoResource {
 
     }
     @GetMapping
-    public ResponseEntity<List<Tecnico>> findAll(){
+    public ResponseEntity<Stream<Tecnico>> findAll(){
 
         List<Tecnico> tecnicos = service.findAll();
-        return ResponseEntity.ok().body(tecnicos);
+        Stream<Tecnico> tecnicoList = tecnicos.stream();
+                //.filter(tecnico -> tecnico.getNome().equals("Reinaldo"));
+        return ResponseEntity.ok().body(tecnicoList);
 
     }
-
 
 }
