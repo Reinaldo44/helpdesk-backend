@@ -4,6 +4,7 @@ import com.reinaldo.helpdesk.domain.Tecnico;
 import  com.reinaldo.helpdesk.repositories.TecnicoRepository;
 import com.reinaldo.helpdesk.service.exceptions.ObjectnotFoundExceptions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
