@@ -1,6 +1,7 @@
 package com.reinaldo.helpdesk.service;
 
 import com.reinaldo.helpdesk.domain.Tecnico;
+import com.reinaldo.helpdesk.dtos.TecnicoDto;
 import  com.reinaldo.helpdesk.repositories.TecnicoRepository;
 import com.reinaldo.helpdesk.service.exceptions.ObjectnotFoundExceptions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,10 @@ public class TecnicoService {
         return tecnicos;
     }
 
+    public Tecnico created(TecnicoDto tecDto) {
+
+        tecDto.setId(null);
+        Tecnico newObj = new Tecnico(tecDto);
+        return repository.save(newObj);
+    }
 }

@@ -1,7 +1,10 @@
 package com.reinaldo.helpdesk.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.reinaldo.helpdesk.domain.Pessoa;
 import com.reinaldo.helpdesk.domain.Tecnico;
+import com.reinaldo.helpdesk.domain.enums.Perfil;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -23,9 +26,11 @@ public class TecnicoDto implements Serializable {
 
     public TecnicoDto() {
         super();
+        setPerfis(Perfil.CLIENTE);
     }
 
     public TecnicoDto(Tecnico tecnico) {
+        super();
         this.id = tecnico.getId();
         this.nome = tecnico.getNome();
         this.cpf = tecnico.getCpf();
@@ -33,6 +38,14 @@ public class TecnicoDto implements Serializable {
         this.senha = tecnico.getSenha();
         this.perfis = tecnico.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = tecnico.getDataCriacao();
+        setPerfis(Perfil.CLIENTE);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -67,12 +80,12 @@ public class TecnicoDto implements Serializable {
         this.senha = senha;
     }
 
-    public Set<Integer> getPerfis() {
-        return perfis;
+    public Set<Perfil> getPerfis() {
+        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
     }
 
-    public void setPerfis(Set<Integer> perfis) {
-        this.perfis = perfis;
+    public void setPerfis(Perfil perfis) {
+        this.perfis.add(perfis.getCodigo());
     }
 
     public LocalDate getDataCriacao() {

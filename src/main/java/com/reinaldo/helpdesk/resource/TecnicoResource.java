@@ -4,13 +4,12 @@ import com.reinaldo.helpdesk.dtos.TecnicoDto;
 import com.reinaldo.helpdesk.service.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(value = "/tecnicos")
@@ -32,5 +31,12 @@ public class TecnicoResource {
         List<TecnicoDto> listDto = tecnicos.stream().map(obj -> new TecnicoDto(obj)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDto);
     }
+    @PostMapping
+    public ResponseEntity<TecnicoDto> create(@RequestBody TecnicoDto tecDto){
 
+        Tecnico tecnico = service.created(tecDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(tecnico.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+
+    }
 }
