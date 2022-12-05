@@ -1,5 +1,6 @@
 package com.reinaldo.helpdesk.resource.exceptions;
 
+import com.reinaldo.helpdesk.service.exceptions.DataIntegrityViolationException;
 import com.reinaldo.helpdesk.service.exceptions.ObjectnotFoundExceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,15 @@ public class ResourceExceptionHandler {
                    "Object Not Found",ex.getMessage(), request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> dataIntegrityViolationException
+            (DataIntegrityViolationException ex, HttpServletRequest request){
+
+        StandardError error = new StandardError(date , HttpStatus.BAD_REQUEST.value(),
+                "Violação de dados",ex.getMessage(), request.getRequestURI());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
 }

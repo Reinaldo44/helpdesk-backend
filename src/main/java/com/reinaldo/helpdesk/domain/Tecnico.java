@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-public class Tecnico extends Pessoa implements Serializable {
+public class Tecnico extends Pessoa{
 
     private static final long serialVersionUID = 1L;
 

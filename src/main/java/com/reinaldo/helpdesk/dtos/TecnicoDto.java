@@ -1,10 +1,8 @@
 package com.reinaldo.helpdesk.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.reinaldo.helpdesk.domain.Pessoa;
 import com.reinaldo.helpdesk.domain.Tecnico;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
