@@ -32,7 +32,7 @@ public class TecnicoService {
         return tecnicos;
     }
 
-    public Tecnico created(TecnicoDto tecDto) {
+    public Tecnico create(TecnicoDto tecDto) {
 
         tecDto.setId(null);
         validaPorCpfEmail(tecDto);

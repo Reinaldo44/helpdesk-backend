@@ -3,28 +3,34 @@ package com.reinaldo.helpdesk.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.reinaldo.helpdesk.domain.Tecnico;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class TecnicoDto implements Serializable {
+public class TecnicoDto implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
     protected Integer id;
+
+    @NotNull
     protected String nome;
+    @NotNull
     protected String cpf;
+    @NotNull
     protected String email;
+    @NotNull
     protected String senha;
     protected Set<Integer> perfis = new HashSet<>();
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
     public TecnicoDto() {
-        super();
-        setPerfis(Perfil.CLIENTE);
+
     }
 
     public TecnicoDto(Tecnico tecnico) {
