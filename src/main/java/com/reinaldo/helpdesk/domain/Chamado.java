@@ -6,7 +6,6 @@ import com.reinaldo.helpdesk.domain.enums.Status;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Entity
 public class Chamado implements Serializable {
@@ -15,7 +14,6 @@ public class Chamado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private LocalDate dataAbertura = LocalDate.now();
     private LocalDate dataFechamento;
     private Prioridade prioridade;
@@ -27,15 +25,16 @@ public class Chamado implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-
     @ManyToOne
     @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
 
     public Chamado() {
+        super();
     }
 
     public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico, Cliente cliente) {
+        super();
         this.id = id;
         this.prioridade = prioridade;
         this.status = status;
@@ -101,16 +100,20 @@ public class Chamado implements Serializable {
         this.observacoes = observacoes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Chamado)) return false;
-        Chamado chamado = (Chamado) o;
-        return getId().equals(chamado.getId());
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
+
+    public Tecnico getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Tecnico tecnico) {
+        this.tecnico = tecnico;
+    }
+
 }

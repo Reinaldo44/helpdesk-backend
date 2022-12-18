@@ -36,12 +36,13 @@ public abstract class Pessoa implements Serializable {
 
     public Pessoa(Integer id, String nome, String cpf, String email, String senha) {
         super();
-
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
+        setPerfil(Perfil.CLIENTE);
+
     }
 
     public Integer getId() {
@@ -89,8 +90,8 @@ public abstract class Pessoa implements Serializable {
 
     }
 
-    public void setPerfil(Perfil perfil) {
-        this.perfis.add(perfil.getCodigo());
+    public void setPerfil(Perfil perfis) {
+        this.perfis.add(perfis.getCodigo());
     }
 
     public LocalDate getDataCriacao() {

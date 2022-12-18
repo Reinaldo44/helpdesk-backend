@@ -18,17 +18,18 @@ public enum Prioridade {
     public String getDescricao() {
         return descricao;
     }
-    public static Status toEnum(Integer cod){
 
+    public static Prioridade toEnum(Integer cod) {
         if(cod == null) {
-
             return null;
         }
-        for (Status x : Status.values()){
-            if(cod.equals(x.getCodigo())){
+
+        for(Prioridade x : Prioridade.values()) {
+            if(cod.equals(x.getCodigo())) {
                 return x;
             }
         }
-        throw new IllegalArgumentException("Status inválido!");
+
+        throw new IllegalArgumentException("Prioridade inválida");
     }
 }

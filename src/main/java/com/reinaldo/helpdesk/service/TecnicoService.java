@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,17 +19,17 @@ import java.util.Optional;
 public class TecnicoService {
 
     @Autowired
-    private TecnicoRepository repository;
+    private TecnicoRepository tecenicoRepository;
 
     @Autowired
     private PessoaRepository pessoaRepository;
 
     public Tecnico findById(Integer id){
-        Optional<Tecnico> obj = repository.findById(id);
+        Optional<Tecnico> obj = tecenicoRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectnotFoundExceptions("Objeto não encontrado" + id));
     }
     public List<Tecnico> findAll(){
-        List<Tecnico> tecnicos = repository.findAll();
+        List<Tecnico> tecnicos = tecenicoRepository.findAll();
         return tecnicos;
     }
 
@@ -37,7 +38,7 @@ public class TecnicoService {
         tecDto.setId(null);
         validaPorCpfEmail(tecDto);
         Tecnico newObj = new Tecnico(tecDto);
-        return repository.save(newObj);
+        return tecenicoRepository.save(newObj);
     }
 
     private void validaPorCpfEmail(TecnicoDto tecDto) {
@@ -51,6 +52,28 @@ public class TecnicoService {
 
         if(obj.isPresent() && obj.get().getId() != tecDto.getId()){
             throw new DataIntegrityViolationException("Email já cadastrado no sistema.");
+        }
+
+    }
+
+    public Tecnico update(Integer id,@Valid TecnicoDto tecDto) {
+        tecDto.setId(id);
+        validaPorCpfEmail(tecDto);
+        Tecnico tecnico = findById(id);
+        tecnico = new Tecnico(tecDto);
+        return tecenicoRepository.save(tecnico);
+
+    }
+
+    public void delete(Integer id) {
+
+        Tecnico tecnico = findById(id);
+        if(tecnico.getChamados().size() > 0){
+           throw new DataIntegrityViolationException("O técnico possui chamados em seu nome, não pode ser deletdo!");
+        }
+        else {
+
+            tecenicoRepository.deleteById(id);
         }
 
     }

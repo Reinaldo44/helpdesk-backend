@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface TecnicoRepository extends JpaRepository<Tecnico, Integer> {
 
-
+    void deleteById(Integer id);
 }
