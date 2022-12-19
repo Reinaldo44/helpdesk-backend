@@ -11,6 +11,7 @@ import com.reinaldo.helpdesk.service.exceptions.ObjectnotFoundExceptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +32,23 @@ public class ChamadoService {
         return chamado.orElseThrow(()-> new ObjectnotFoundExceptions("Objeto não encontrado!" + id));
     }
 
+    public List<Chamado> findAll() {
+
+        List<Chamado> chamado = chamadoRepository.findAll();
+        return chamado;
+    }
+
     public Chamado create(ChamadoDto obj) {
 
        return chamadoRepository.save(newChamado(obj));
+    }
+    public Chamado update(Integer id, ChamadoDto objDto){
+
+        objDto.setId(id);
+        Chamado oldObj = findById(id);
+        oldObj = newChamado(objDto);
+        return chamadoRepository.save(oldObj);
+
     }
     private Chamado newChamado(ChamadoDto obj){
 
@@ -44,6 +59,11 @@ public class ChamadoService {
 
         if(obj.getId() != null){
              chamado.setId(obj.getId());
+        }
+        if(obj.getStatus().equals(2)){
+
+            chamado.setDataFechamento(LocalDate.now());
+
         }
 
         chamado.setCliente(cliente);
@@ -56,9 +76,5 @@ public class ChamadoService {
         return chamado;
     }
 
-    public List<Chamado> findAll() {
 
-       List<Chamado> chamado = chamadoRepository.findAll();
-       return chamado;
-    }
 }
