@@ -2,7 +2,7 @@ package com.reinaldo.helpdesk.service;
 
 import com.reinaldo.helpdesk.domain.Pessoa;
 import com.reinaldo.helpdesk.domain.Cliente;
-import com.reinaldo.helpdesk.dtos.ClienteDto;
+import com.reinaldo.helpdesk.domain.dtos.ClienteDto;
 import com.reinaldo.helpdesk.repositories.PessoaRepository;
 import com.reinaldo.helpdesk.repositories.ClienteRepository;
 import com.reinaldo.helpdesk.service.exceptions.DataIntegrityViolationException;

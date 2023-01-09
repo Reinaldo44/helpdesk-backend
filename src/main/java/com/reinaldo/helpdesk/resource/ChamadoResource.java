@@ -1,7 +1,6 @@
 package com.reinaldo.helpdesk.resource;
 import com.reinaldo.helpdesk.domain.Chamado;
-import com.reinaldo.helpdesk.dtos.ChamadoDto;
-import com.reinaldo.helpdesk.dtos.TecnicoDto;
+import com.reinaldo.helpdesk.domain.dtos.ChamadoDto;
 import com.reinaldo.helpdesk.service.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

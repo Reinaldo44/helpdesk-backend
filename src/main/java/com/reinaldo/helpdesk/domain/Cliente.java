@@ -2,8 +2,7 @@ package com.reinaldo.helpdesk.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
-import com.reinaldo.helpdesk.dtos.ClienteDto;
-import com.reinaldo.helpdesk.dtos.TecnicoDto;
+import com.reinaldo.helpdesk.domain.dtos.ClienteDto;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

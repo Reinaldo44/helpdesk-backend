@@ -5,7 +5,7 @@ import com.reinaldo.helpdesk.domain.Cliente;
 import com.reinaldo.helpdesk.domain.Tecnico;
 import com.reinaldo.helpdesk.domain.enums.Prioridade;
 import com.reinaldo.helpdesk.domain.enums.Status;
-import com.reinaldo.helpdesk.dtos.ChamadoDto;
+import com.reinaldo.helpdesk.domain.dtos.ChamadoDto;
 import com.reinaldo.helpdesk.repositories.ChamadoRepository;
 import com.reinaldo.helpdesk.service.exceptions.ObjectnotFoundExceptions;
 import org.springframework.beans.factory.annotation.Autowired;

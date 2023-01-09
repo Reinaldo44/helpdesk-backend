@@ -1,4 +1,4 @@
-package com.reinaldo.helpdesk.dtos;
+package com.reinaldo.helpdesk.domain.dtos;
 
 public class CredenciaisDto {
     private String email;

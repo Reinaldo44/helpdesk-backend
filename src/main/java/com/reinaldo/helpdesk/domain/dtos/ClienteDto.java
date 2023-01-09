@@ -1,7 +1,7 @@
-package com.reinaldo.helpdesk.dtos;
+package com.reinaldo.helpdesk.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.reinaldo.helpdesk.domain.Tecnico;
+import com.reinaldo.helpdesk.domain.Cliente;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
 
 import javax.validation.constraints.NotNull;
@@ -11,9 +11,10 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class TecnicoDto implements Serializable{
+public class ClienteDto implements Serializable{
 
     private static final long serialVersionUID = 1L;
+
     protected Integer id;
     @NotNull
     protected String nome;
@@ -27,18 +28,18 @@ public class TecnicoDto implements Serializable{
     @JsonFormat(pattern = "dd/MM/yyyy")
     protected LocalDate dataCriacao = LocalDate.now();
 
-    public TecnicoDto() {
+    public ClienteDto() {
     }
 
-    public TecnicoDto(Tecnico tecnico) {
+    public ClienteDto(Cliente cliente) {
         super();
-        this.id = tecnico.getId();
-        this.nome = tecnico.getNome();
-        this.cpf = tecnico.getCpf();
-        this.email = tecnico.getEmail();
-        this.senha = tecnico.getSenha();
-        this.perfis = tecnico.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
-        this.dataCriacao = tecnico.getDataCriacao();
+        this.id = cliente.getId();
+        this.nome = cliente.getNome();
+        this.cpf = cliente.getCpf();
+        this.email = cliente.getEmail();
+        this.senha = cliente.getSenha();
+        this.perfis = cliente.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+        this.dataCriacao = cliente.getDataCriacao();
         setPerfis(Perfil.CLIENTE);
     }
 

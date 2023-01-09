@@ -1,9 +1,7 @@
-package com.reinaldo.helpdesk.dtos;
+package com.reinaldo.helpdesk.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.reinaldo.helpdesk.domain.Chamado;
-import com.reinaldo.helpdesk.domain.enums.Prioridade;
-import com.reinaldo.helpdesk.domain.enums.Status;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

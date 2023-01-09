@@ -1,6 +1,6 @@
 package com.reinaldo.helpdesk.resource;
 import com.reinaldo.helpdesk.domain.Cliente;
-import com.reinaldo.helpdesk.dtos.ClienteDto;
+import com.reinaldo.helpdesk.domain.dtos.ClienteDto;
 import com.reinaldo.helpdesk.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

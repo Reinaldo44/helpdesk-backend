@@ -1,7 +1,7 @@
 package com.reinaldo.helpdesk.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.reinaldo.helpdesk.domain.enums.Perfil;
-import com.reinaldo.helpdesk.dtos.TecnicoDto;
+import com.reinaldo.helpdesk.domain.dtos.TecnicoDto;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
