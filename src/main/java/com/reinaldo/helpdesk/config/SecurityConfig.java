@@ -5,6 +5,7 @@ import java.util.Arrays;
 import com.reinaldo.helpdesk.security.JWTAuthenticationFilter;
 import com.reinaldo.helpdesk.security.JWTAuthorizationFilter;
 import com.reinaldo.helpdesk.security.JWTUtil;
+import com.reinaldo.helpdesk.service.ImplementsUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -25,14 +26,14 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String[] PUBLIC_MATCHERS = { "/h2-console/**" };
+    private static final String[] PUBLIC_MATCHERS = { "/h2-console/**", "/tecnicos/"};
 
     @Autowired
     private Environment env;
     @Autowired
     private JWTUtil jwtUtil;
     @Autowired
-    private UserDetailsService userDetailsService;
+    private ImplementsUserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userDetailsService);
+                //.passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Bean
